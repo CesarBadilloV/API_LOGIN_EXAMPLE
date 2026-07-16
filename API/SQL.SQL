@@ -1,3 +1,10 @@
+USE master;
+GO
+
+CREATE LOGIN app_login
+WITH PASSWORD = 'NuevaContraseña123!';
+GO
+
 -- 1. Crear la base de datos (omite este paso si ya la tienes creada)
 CREATE DATABASE DB_LOGIN_EXAMPLE;
 GO
@@ -23,4 +30,10 @@ GO
 -- 4. Crear índices para acelerar las consultas de autenticación y búsquedas
 CREATE NONCLUSTERED INDEX IX_usuarios_username ON usuarios (username);
 CREATE NONCLUSTERED INDEX IX_usuarios_email ON usuarios (email);
+GO
+
+CREATE USER app_login FOR LOGIN app_login;
+GO
+
+ALTER ROLE db_owner ADD MEMBER app_login;
 GO

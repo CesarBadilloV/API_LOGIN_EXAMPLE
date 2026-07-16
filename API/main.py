@@ -1,10 +1,12 @@
 from datetime import datetime, timedelta, timezone
 from typing import Annotated
 from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jose import JWTError, jwt
 import bcrypt
 from pydantic import BaseModel
+from sqlalchemy import or_
 from sqlalchemy.orm import Session
 
 # Importamos la configuración de SQL Server
@@ -18,6 +20,14 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 30
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app = FastAPI(title="FastAPI con SQL Server y Login Seguro")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Crear tablas en SQL Server si no existen
 Base.metadata.create_all(bind=engine)
@@ -109,8 +119,10 @@ def register_user(user_in: UserCreate, db: Session = Depends(get_db)):
 # 2. Login - Genera el JWT si las credenciales coinciden con SQL Server
 @app.post("/token", response_model=Token)
 async def login(form_data: Annotated[OAuth2PasswordRequestForm, Depends()], db: Session = Depends(get_db)):
-    # Buscar el usuario en la tabla
-    db_user = db.query(UserDB).filter(UserDB.username == form_data.username).first()
+    # Buscar el usuario en la tabla por username o email
+    db_user = db.query(UserDB).filter(
+        or_(UserDB.username == form_data.username, UserDB.email == form_data.username)
+    ).first()
     
     if not db_user or not verify_password(form_data.password, db_user.hashed_password):
         raise HTTPException(

@@ -4,8 +4,8 @@ from sqlalchemy.orm import sessionmaker
 import urllib
 
 # 1. Define tus credenciales de SQL Server
-DATABASE_USER = "User2"
-DATABASE_PASSWORD = "J4sutul1M1ku2004"
+DATABASE_USER = "app_login"
+DATABASE_PASSWORD = "NuevaContraseña123!"
 DATABASE_SERVER = "localhost"  # O la IP de tu servidor, ej. "127.0.0.1" o "INSTANCIA_SQL"
 DATABASE_NAME = "DB_LOGIN_EXAMPLE"  # Asegúrate de que la base de datos exista en tu SQL Server
 # Asegúrate de poner el nombre exacto del driver que instalaste

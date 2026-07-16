@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Moonlit — a gothic music and magic experience.">
+    <title>Moonlit</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+
+    <!-- LOGIN -->
+    <main id="loginView" class="auth-page">
+        <section class="auth-visual">
+            <div class="moon"></div>
+            <div class="stars"></div>
+
+            <div class="auth-copy">
+                <p class="eyebrow">A PRIVATE LISTENING EXPERIENCE</p>
+                <h1>Music for the<br><em>midnight soul.</em></h1>
+                <p>
+                    Enter a place where music, dreams and a little bit of magic
+                    meet after dark.
+                </p>
+            </div>
+        </section>
+
+        <section class="auth-panel">
+            <div class="auth-box">
+                <a class="logo" href="#" aria-label="Moonlit home">
+                    <span class="logo-mark">☾</span>
+                    <span>MOONLIT</span>
+                </a>
+
+                <div class="auth-heading">
+                    <p class="section-label">WELCOME BACK</p>
+                    <h2>Enter the night</h2>
+                    <p>Log in to continue to your music sanctuary.</p>
+                </div>
+
+                <form id="loginForm" class="auth-form">
+                    <label for="loginUsername">Username or email</label>
+                    <div class="input-shell">
+                        <span class="input-icon">✦</span>
+                        <input
+                            id="loginUsername"
+                            name="username"
+                            type="text"
+                            autocomplete="username"
+                            placeholder="yourname"
+                            required
+                        >
+                    </div>
+
+                    <label for="loginPassword">Password</label>
+                    <div class="input-shell">
+                        <span class="input-icon">◈</span>
+                        <input
+                            id="loginPassword"
+                            name="password"
+                            type="password"
+                            autocomplete="current-password"
+                            placeholder="••••••••"
+                            minlength="8"
+                            required
+                        >
+                        <button
+                            id="togglePassword"
+                            class="password-toggle"
+                            type="button"
+                            aria-label="Show password"
+                        >
+                            Show
+                        </button>
+                    </div>
+
+                    <div class="form-row">
+                        <label class="check-option">
+                            <input id="rememberMe" type="checkbox">
+                            <span>Remember me</span>
+                        </label>
+
+                        <button class="text-button" type="button">
+                            Forgot password?
+                        </button>
+                    </div>
+
+                    <button id="loginButton" class="primary-button" type="submit">
+                        <span>Enter Moonlit</span>
+                        <span>→</span>
+                    </button>
+                </form>
+
+                <p class="auth-footer">
+                    New to Moonlit?
+                    <button id="showRegister" class="text-button accent" type="button">
+                        Create an account
+                    </button>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- REGISTER -->
+    <main id="registerView" class="auth-page hidden">
+        <section class="auth-visual register-visual">
+            <div class="moon"></div>
+            <div class="stars"></div>
+
+            <div class="auth-copy">
+                <p class="eyebrow">JOIN THE CIRCLE</p>
+                <h1>Create your own<br><em>musical ritual.</em></h1>
+                <p>
+                    Save playlists, discover nocturnal sounds and build a
+                    collection that feels completely yours.
+                </p>
+            </div>
+        </section>
+
+        <section class="auth-panel">
+            <div class="auth-box">
+                <a class="logo" href="#" aria-label="Moonlit home">
+                    <span class="logo-mark">☾</span>
+                    <span>MOONLIT</span>
+                </a>
+
+                <div class="auth-heading">
+                    <p class="section-label">CREATE ACCOUNT</p>
+                    <h2>Begin your ritual</h2>
+                    <p>Your password must contain at least 8 characters.</p>
+                </div>
+
+                <form id="registerForm" class="auth-form">
+                    <label for="registerUsername">Username</label>
+                    <div class="input-shell">
+                        <span class="input-icon">✦</span>
+                        <input
+                            id="registerUsername"
+                            name="username"
+                            type="text"
+                            autocomplete="username"
+                            placeholder="moonchild"
+                            minlength="3"
+                            maxlength="30"
+                            required
+                        >
+                    </div>
+
+                    <label for="registerPassword">Password</label>
+                    <div class="input-shell">
+                        <span class="input-icon">◈</span>
+                        <input
+                            id="registerPassword"
+                            name="password"
+                            type="password"
+                            autocomplete="new-password"
+                            placeholder="Minimum 8 characters"
+                            minlength="8"
+                            required
+                        >
+                    </div>
+
+                    <button id="registerButton" class="primary-button" type="submit">
+                        <span>Create account</span>
+                        <span>→</span>
+                    </button>
+                </form>
+
+                <p class="auth-footer">
+                    Already have an account?
+                    <button id="showLogin" class="text-button accent" type="button">
+                        Log in
+                    </button>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- HOME / MUSIC APP -->
+    <div id="appView" class="app-layout hidden">
+
+        <aside id="sidebar" class="sidebar">
+            <div>
+                <a class="logo sidebar-logo" href="#home">
+                    <span class="logo-mark">☾</span>
+                    <span>MOONLIT</span>
+                </a>
+
+                <nav class="main-nav" aria-label="Main navigation">
+                    <button class="nav-item active" data-section="home">
+                        <span>⌂</span>
+                        <span>Home</span>
+                    </button>
+                    <button class="nav-item" data-section="discover">
+                        <span>✦</span>
+                        <span>Discover</span>
+                    </button>
+                    <button class="nav-item" data-section="library">
+                        <span>♬</span>
+                        <span>Your Library</span>
+                    </button>
+                    <button class="nav-item" data-section="rituals">
+                        <span>☽</span>
+                        <span>Daily Rituals</span>
+                    </button>
+                </nav>
+
+                <div class="sidebar-group">
+                    <p class="sidebar-label">YOUR COLLECTION</p>
+
+                    <button class="playlist-link">
+                        <span class="playlist-dot burgundy"></span>
+                        Velvet Nights
+                    </button>
+                    <button class="playlist-link">
+                        <span class="playlist-dot rose"></span>
+                        Sad Girl Cinema
+                    </button>
+                    <button class="playlist-link">
+                        <span class="playlist-dot gold"></span>
+                        Witching Hour
+                    </button>
+                    <button class="playlist-link">
+                        <span class="playlist-dot grey"></span>
+                        Rain on Old Windows
+                    </button>
+                </div>
+            </div>
+
+            <div class="sidebar-bottom">
+                <button id="logoutButton" class="logout-button">
+                    <span>↙</span>
+                    <span>Log out</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="app-shell">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <button id="menuButton" class="icon-button mobile-menu" aria-label="Open menu">
+                        ☰
+                    </button>
+
+                    <div class="history-buttons">
+                        <button class="circle-button" aria-label="Go back">‹</button>
+                        <button class="circle-button" aria-label="Go forward">›</button>
+                    </div>
+
+                    <label class="search-box">
+                        <span>⌕</span>
+                        <input
+                            id="searchInput"
+                            type="search"
+                            placeholder="Search songs, artists or spells..."
+                        >
+                    </label>
+                </div>
+
+                <div class="profile-area">
+                    <button class="profile-button">
+                        <span class="profile-avatar">☾</span>
+                        <span id="profileName">Moon Child</span>
+                        <span>⌄</span>
+                    </button>
+                </div>
+            </header>
+
+            <main class="content">
+                <section id="homeSection" class="content-section">
+                    <section class="hero">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-stars"></div>
+
+                        <div class="hero-content">
+                            <p class="hero-kicker">FEATURED PLAYLIST</p>
+                            <h1>Born to listen<br>after midnight.</h1>
+                            <p class="hero-description">
+                                Dreamy vocals, cinematic strings and songs for
+                                driving nowhere under a violet sky.
+                            </p>
+
+                            <div class="hero-actions">
+                                <button id="heroPlayButton" class="play-button">
+                                    <span>▶</span>
+                                    Play
+                                </button>
+                                <button class="ghost-button">Save to library</button>
+                                <button class="round-more">•••</button>
+                            </div>
+                        </div>
+
+                        <div class="vinyl-art" aria-hidden="true">
+                            <div class="vinyl-ring">
+                                <div class="vinyl-label">MOONLIT</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="quick-section">
+                        <div class="section-heading-row">
+                            <div>
+                                <p class="section-label">MADE FOR YOU</p>
+                                <h2>Tonight's atmosphere</h2>
+                            </div>
+                            <button class="text-button accent">See all</button>
+                        </div>
+
+                        <div class="quick-grid">
+                            <button class="quick-card" data-song="Velvet Underground">
+                                <div class="quick-cover cover-one">☾</div>
+                                <span>Velvet Underground</span>
+                                <span class="quick-play">▶</span>
+                            </button>
+
+                            <button class="quick-card" data-song="Hollywood Sadness">
+                                <div class="quick-cover cover-two">✦</div>
+                                <span>Hollywood Sadness</span>
+                                <span class="quick-play">▶</span>
+                            </button>
+
+                            <button class="quick-card" data-song="Ancient Love Letters">
+                                <div class="quick-cover cover-three">♜</div>
+                                <span>Ancient Love Letters</span>
+                                <span class="quick-play">▶</span>
+                            </button>
+
+                            <button class="quick-card" data-song="Songs for a Séance">
+                                <div class="quick-cover cover-four">☽</div>
+                                <span>Songs for a Séance</span>
+                                <span class="quick-play">▶</span>
+                            </button>
+                        </div>
+                    </section>
+
+                    <section class="recommendations">
+                        <div class="section-heading-row">
+                            <div>
+                                <p class="section-label">CURATED BY MOONLIT</p>
+                                <h2>Albums for your current phase</h2>
+                            </div>
+                            <button class="text-button accent">View collection</button>
+                        </div>
+
+                        <div id="albumGrid" class="album-grid">
+                            <article class="album-card" data-title="Crimson Honeymoon">
+                                <div class="album-cover album-one">
+                                    <span class="cover-symbol">♥</span>
+                                    <button class="album-play">▶</button>
+                                </div>
+                                <h3>Crimson Honeymoon</h3>
+                                <p>Dark romance · Dream pop</p>
+                            </article>
+
+                            <article class="album-card" data-title="Paradise in Black">
+                                <div class="album-cover album-two">
+                                    <span class="cover-symbol">✦</span>
+                                    <button class="album-play">▶</button>
+                                </div>
+                                <h3>Paradise in Black</h3>
+                                <p>Cinematic · Alternative</p>
+                            </article>
+
+                            <article class="album-card" data-title="Ultraviolet Dreams">
+                                <div class="album-cover album-three">
+                                    <span class="cover-symbol">☾</span>
+                                    <button class="album-play">▶</button>
+                                </div>
+                                <h3>Ultraviolet Dreams</h3>
+                                <p>Slowcore · Nocturnal</p>
+                            </article>
+
+                            <article class="album-card" data-title="The High Priestess">
+                                <div class="album-cover album-four">
+                                    <span class="cover-symbol">Ⅱ</span>
+                                    <button class="album-play">▶</button>
+                                </div>
+                                <h3>The High Priestess</h3>
+                                <p>Ambient · Mystical</p>
+                            </article>
+
+                            <article class="album-card" data-title="Old Money, New Ghosts">
+                                <div class="album-cover album-five">
+                                    <span class="cover-symbol">♛</span>
+                                    <button class="album-play">▶</button>
+                                </div>
+                                <h3>Old Money, New Ghosts</h3>
+                                <p>Vintage pop · Melancholy</p>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="magic-panel">
+                        <div>
+                            <p class="section-label">DAILY ORACLE</p>
+                            <h2>Your song of the day</h2>
+                            <p id="oracleText">
+                                The moon suggests listening to something slow,
+                                dramatic and impossible to forget.
+                            </p>
+                        </div>
+
+                        <button id="oracleButton" class="oracle-button">
+                            Draw a song
+                            <span>✦</span>
+                        </button>
+                    </section>
+                </section>
+
+                <section id="discoverSection" class="content-section hidden">
+                    <div class="page-title">
+                        <p class="section-label">EXPLORE</p>
+                        <h1>Discover</h1>
+                        <p>Find music for every mood, phase and midnight thought.</p>
+                    </div>
+
+                    <div class="genre-grid">
+                        <article class="genre-card genre-a">
+                            <span>01</span>
+                            <h3>Dream Pop</h3>
+                        </article>
+                        <article class="genre-card genre-b">
+                            <span>02</span>
+                            <h3>Dark Romance</h3>
+                        </article>
+                        <article class="genre-card genre-c">
+                            <span>03</span>
+                            <h3>Witch House</h3>
+                        </article>
+                        <article class="genre-card genre-d">
+                            <span>04</span>
+                            <h3>Cinematic</h3>
+                        </article>
+                        <article class="genre-card genre-e">
+                            <span>05</span>
+                            <h3>Melancholia</h3>
+                        </article>
+                        <article class="genre-card genre-f">
+                            <span>06</span>
+                            <h3>After Hours</h3>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="librarySection" class="content-section hidden">
+                    <div class="page-title">
+                        <p class="section-label">YOUR COLLECTION</p>
+                        <h1>Your Library</h1>
+                        <p>Music you saved for later, forever or the next full moon.</p>
+                    </div>
+
+                    <div class="library-table">
+                        <div class="library-row library-header">
+                            <span>#</span>
+                            <span>Title</span>
+                            <span>Album</span>
+                            <span>Duration</span>
+                        </div>
+
+                        <button class="library-row song-row" data-song="Black Roses">
+                            <span>01</span>
+                            <span>
+                                <strong>Black Roses</strong>
+                                <small>Violet Saint</small>
+                            </span>
+                            <span>Crimson Honeymoon</span>
+                            <span>3:48</span>
+                        </button>
+
+                        <button class="library-row song-row" data-song="Ocean Boulevard at 2AM">
+                            <span>02</span>
+                            <span>
+                                <strong>Ocean Boulevard at 2AM</strong>
+                                <small>The Pale Cinema</small>
+                            </span>
+                            <span>Paradise in Black</span>
+                            <span>4:21</span>
+                        </button>
+
+                        <button class="library-row song-row" data-song="The Moon Knows">
+                            <span>03</span>
+                            <span>
+                                <strong>The Moon Knows</strong>
+                                <small>Arcana Bloom</small>
+                            </span>
+                            <span>The High Priestess</span>
+                            <span>3:59</span>
+                        </button>
+                    </div>
+                </section>
+
+                <section id="ritualsSection" class="content-section hidden">
+                    <div class="page-title">
+                        <p class="section-label">MAGIC & MUSIC</p>
+                        <h1>Daily Rituals</h1>
+                        <p>Choose a ritual and let the soundtrack do the rest.</p>
+                    </div>
+
+                    <div class="ritual-grid">
+                        <article class="ritual-card">
+                            <span class="ritual-icon">☕</span>
+                            <p class="section-label">MORNING</p>
+                            <h3>Soft awakening</h3>
+                            <p>Gentle strings and quiet voices for a slow beginning.</p>
+                            <button class="ghost-button ritual-play" data-song="Soft Awakening">
+                                Begin ritual
+                            </button>
+                        </article>
+
+                        <article class="ritual-card">
+                            <span class="ritual-icon">✎</span>
+                            <p class="section-label">FOCUS</p>
+                            <h3>Write under candlelight</h3>
+                            <p>Instrumentals for studying, writing and disappearing.</p>
+                            <button class="ghost-button ritual-play" data-song="Candlelight Focus">
+                                Begin ritual
+                            </button>
+                        </article>
+
+                        <article class="ritual-card">
+                            <span class="ritual-icon">☾</span>
+                            <p class="section-label">NIGHT</p>
+                            <h3>Midnight reflection</h3>
+                            <p>Slow songs for the hour when everything feels cinematic.</p>
+                            <button class="ghost-button ritual-play" data-song="Midnight Reflection">
+                                Begin ritual
+                            </button>
+                        </article>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer id="player" class="player">
+            <div class="now-playing">
+                <div id="playerCover" class="player-cover">☾</div>
+                <div>
+                    <strong id="currentSong">Midnight in Bloom</strong>
+                    <span id="currentArtist">Moonlit Radio</span>
+                </div>
+                <button id="likeButton" class="player-icon" aria-label="Like song">♡</button>
+            </div>
+
+            <div class="player-center">
+                <div class="player-controls">
+                    <button class="player-icon">⌘</button>
+                    <button id="previousButton" class="player-icon">◀</button>
+                    <button id="mainPlayButton" class="main-play" aria-label="Play">▶</button>
+                    <button id="nextButton" class="player-icon">▶</button>
+                    <button class="player-icon">↻</button>
+                </div>
+
+                <div class="progress-row">
+                    <span id="currentTime">0:00</span>
+                    <div id="progressBar" class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                    <span>3:48</span>
+                </div>
+            </div>
+
+            <div class="player-options">
+                <button class="player-icon">☷</button>
+                <button class="player-icon">◉</button>
+                <span>⌁</span>
+                <input class="volume-slider" type="range" min="0" max="100" value="65">
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
